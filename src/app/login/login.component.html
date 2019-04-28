@@ -1,0 +1,49 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="padding:20px" class="form-horizontal">
+        <div style="padding:20px" class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">User Login</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group" [ngClass]="{'has-error': (loginForm.get('Email').touched ||
+                         loginForm.get('Email').dirty) &&
+                            (loginForm.get('Email').errors)}">
+                        <label class="control-label" for="Email">Email</label>
+                            <input type="text" formControlName="Email" class="form-control" />
+                            <span class="help-block"
+                                *ngIf="((loginForm.get('Email').touched ||
+                                        loginForm.get('Email').dirty) &&
+                                        loginForm.get('Email').errors)">
+                         <span *ngIf="loginForm.get('Email').errors.required">
+                            Email is required
+                        </span>
+                        <span *ngIf="loginForm.get('Email').errors.email">
+                                Email is not valid
+                         </span>
+                    </span>
+                 </div>
+        <div class="form-group" [ngClass]="{'has-error': (loginForm.get('Password').touched ||
+            loginForm.get('Password').dirty) &&
+            (loginForm.get('Password').errors)}">
+             <label class="control-label" for="Password">Password</label>
+             <input type="Password" formControlName="Password" class="form-control" />
+             <span class="help-block"
+                     *ngIf="((loginForm.get('Password').touched ||
+                loginForm.get('Password').dirty) &&
+                loginForm.get('Password').errors)">
+                <span *ngIf="loginForm.get('Password').errors.required">
+                 Password is required
+                </span>
+                <span *ngIf="loginForm.get('Password').errors.pattern">
+                        Password must be atleast 8 character long and have atleast one special character, letter and number
+                       </span>
+             </span>
+         </div>
+        <div class="form-group">
+             <button class="btn btn-primary">Login</button>
+       
+             <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+        </div>
+     </div>
+    </div>
+</form>

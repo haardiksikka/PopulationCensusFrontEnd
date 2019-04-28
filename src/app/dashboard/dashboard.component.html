@@ -1,0 +1,127 @@
+<app-volunteer-navbar></app-volunteer-navbar>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="padding:20px">
+    <div style="padding:20px" class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">House Registeration</h3>
+                </div>
+                <div class="panel-body">
+    <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('HouseNumber').touched ||
+    registerForm.get('HouseNumber').dirty) &&
+         registerForm.get('HouseNumber').errors)}">
+        <label for="HouseNumber">House Number</label>
+        <input type="text" formControlName="HouseNumber" class="form-control" />
+                   <span class="help-block" *ngIf="((registerForm.get('HouseNumber').touched ||
+                                registerForm.get('HouseNumber').dirty) &&
+                                registerForm.get('HouseNumber').errors)">
+                     <span *ngIf="registerForm.get('HouseNumber').errors.required">
+                         HouseNumber is required
+                     </span>
+     
+                     </span>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('Street').touched ||
+    registerForm.get('Street').dirty) &&
+         registerForm.get('Street').errors)}">
+        <label for="Street">Street</label>
+        <input type="text" formControlName="Street" class="form-control"  />
+        <span class="help-block" *ngIf="((registerForm.get('Street').touched ||
+                                registerForm.get('Street').dirty) &&
+                                registerForm.get('Street').errors)">
+                     <span *ngIf="registerForm.get('Street').errors.required">
+                         Street is required
+                     </span>
+     
+             </span>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('City').touched ||
+    registerForm.get('City').dirty) &&
+         registerForm.get('City').errors)}">
+        <label for="City">City</label>
+        <input type="text" formControlName="City" class="form-control"  />
+        <span class="help-block"
+                        *ngIf="((registerForm.get('City').touched ||
+                                registerForm.get('City').dirty) &&
+                                registerForm.get('City').errors)">
+                     <span *ngIf="registerForm.get('City').errors.required">
+                        City is required
+                     </span>
+     
+                     </span>
+    </div>
+  
+    <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('State').touched ||
+    registerForm.get('State').dirty) &&
+         registerForm.get('State').errors)}">
+        <label for="State">State</label>
+        <input type="text" formControlName="State" class="form-control" />
+        <span class="help-block"
+        *ngIf="((registerForm.get('State').touched ||
+                registerForm.get('State').dirty) &&
+                registerForm.get('State').errors)">
+     <span *ngIf="registerForm.get('State').errors.required">
+         State is required
+     </span>
+
+     </span>
+    </div>
+    
+    <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('Pincode').touched ||
+    registerForm.get('Pincode').dirty) &&
+         registerForm.get('Pincode').errors)}">
+      <label for="Pincode">Pincode</label>
+      <input type="number" formControlName="Pincode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Pincode.errors }" />
+      <span class="help-block"
+      *ngIf="((registerForm.get('Pincode').touched ||
+              registerForm.get('Pincode').dirty) &&
+              registerForm.get('Pincode').errors)">
+   <span *ngIf="registerForm.get('Pincode').errors.required">
+       Pincode is required
+   </span>
+
+   </span>
+  </div>
+  <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('NameOfHead').touched ||
+  registerForm.get('NameOfHead').dirty) &&
+       registerForm.get('NameOfHead').errors)}">
+        <label for="NameOfHead">Full Name Of Head</label>
+        <input type="text" formControlName="NameOfHead" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.NameOfHead.errors }" />
+        <span class="help-block"
+                        *ngIf="((registerForm.get('NameOfHead').touched ||
+                                registerForm.get('NameOfHead').dirty) &&
+                                registerForm.get('NameOfHead').errors)">
+                     <span *ngIf="registerForm.get('NameOfHead').errors.required">
+                         First Name is required
+                     </span>
+     
+                     </span>
+    </div>
+    <div class="form-group">
+        <label for="OwnershipStatus">Ownership Status:</label>
+        <select class="form-control" formControlName="OwnershipStatus">
+          <option value="Owner">Owner</option>
+          <option value="Rented">Rented</option>
+          
+        </select>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('NumberOfRooms').touched ||
+      registerForm.get('NumberOfRooms').dirty) &&
+           registerForm.get('NumberOfRooms').errors)}">
+    <label for="NumberOfRooms">Number of Rooms</label>
+    <input type="number" formControlName="NumberOfRooms" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.NumberOfRooms.errors }" />
+    <span class="help-block"
+    *ngIf="((registerForm.get('NumberOfRooms').touched ||
+            registerForm.get('NumberOfRooms').dirty) &&
+            registerForm.get('NumberOfRooms').errors)">
+ <span *ngIf="registerForm.get('NumberOfRooms').errors.required">
+     Number of  rooms is required
+ </span>
+
+ </span>
+</div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>               
+    </div>
+    </div>  
+        </div>  
+</form>

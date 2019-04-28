@@ -1,0 +1,19 @@
+<app-approver-nav-bar></app-approver-nav-bar>
+<div>
+  <div class="row volunteer" style="text-align: center" *ngFor='let i of pending'>
+    <div class="col-sm-4">
+      <img style="height:71px; width:99px" src="http://localhost:61008/image/{{i.ImageName}}">
+    </div>
+    <div class="col-sm-4">{{i.FirstName}} {{i.LastName}} </div>
+    <div class="col-sm-4">
+      <ul style="text-align:center">
+        <li class="list-item btn btn-success" (click)="acceptVolunteer(i.Email)">
+              Accept
+        </li>
+        <li class="list-item btn btn-danger" (click)="rejectVolunteer(i.Email)">
+              Reject
+        </li>
+      </ul>
+    </div>
+  
+</div>

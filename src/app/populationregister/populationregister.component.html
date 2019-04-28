@@ -1,0 +1,140 @@
+<app-volunteer-navbar></app-volunteer-navbar>
+
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="padding:20px">
+        <div style="padding:20px" class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">House Member Registeration</h3>
+                </div>
+                <div class="panel-body">
+                        <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('NameOfPerson').touched ||
+                        registerForm.get('NameOfPerson').dirty) &&
+                             registerForm.get('NameOfPerson').errors)}">
+        <label for="NameOfPerson">Name Of Person</label>
+        <input type="text" formControlName="NameOfPerson" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.NameOfPerson.errors }" />
+        <span class="help-block"
+        *ngIf="((registerForm.get('NameOfPerson').touched ||
+                registerForm.get('NameOfPerson').dirty) &&
+                registerForm.get('NameOfPerson').errors)">
+     <span *ngIf="registerForm.get('NameOfPerson').errors.required">
+         Name is required
+     </span>
+
+     </span>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('CensusHouseNumber').touched ||
+    registerForm.get('CensusHouseNumber').dirty) &&
+         registerForm.get('CensusHouseNumber').errors)}">
+        <label for="CensusHouseNumber">Census House Number</label>
+        <input type="text" formControlName="CensusHouseNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.CensusHouseNumber.errors }" />
+        <span class="help-block"
+        *ngIf="((registerForm.get('CensusHouseNumber').touched ||
+                registerForm.get('CensusHouseNumber').dirty) &&
+                registerForm.get('CensusHouseNumber').errors)">
+     <span *ngIf="registerForm.get('CensusHouseNumber').errors.required">
+         Census House Number is required
+     </span>
+
+     </span>
+    </div>
+    <div class="form-group">
+        <label for="Gender">Gender:</label>
+        <select class="form-control" formControlName="Gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="MaritalStatus">Marital Status:</label>
+        <select class="form-control" formControlName="MaritalStatus">
+        
+          <option value="Married">Married</option>
+          <option value="Unmarried">Unmarried</option>
+         
+        </select>
+      </div>
+    
+      <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('Age').touched ||
+      registerForm.get('Age').dirty) &&
+           registerForm.get('Age').errors)}">
+        <label for="Age">Age</label>
+        <input type="number" formControlName="Age" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Age.errors }" />
+        <span class="help-block"
+        *ngIf="((registerForm.get('Age').touched ||
+                registerForm.get('Age').dirty) &&
+                registerForm.get('Age').errors)">
+     <span *ngIf="registerForm.get('Age').errors.required">
+         Age is required
+     </span>
+
+     </span>
+    </div>
+    <div class="form-group">
+        <label for="DateOfBirth">Date Of Birth</label>
+        <input type="date" formControlName="DateOfBirth" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.DateOfBirth.errors }" />
+        <div *ngIf="submitted && f.DateOfBirth.errors" class="invalid-feedback">
+            <div *ngIf="f.DateOfBirth.errors.required">Date of Birth is required</div>      
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="AgeAtMarriage">Age at Marriage</label>
+        <input type="number" formControlName="AgeAtMarriage" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.AgeAtMarriage.errors }" />
+        <div *ngIf="submitted && f.AgeAtMarriage.errors" class="invalid-feedback">
+            <div *ngIf="f.AgeAtMarriage.errors.required">Age at Marriage is required</div>
+           
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="RelationshipToHead">Relationship To Head:</label>
+        <select class="form-control" formControlName="RelationshipToHead">
+          <option value="Self">Self</option>
+          <option value="Spouce">Spouce</option>
+          <option value="Son">Son</option>
+          <option value="Daughter">Daughter</option>
+          <option value="Sibling">Sibling</option>
+          <option value="Grandson">Grandson</option>
+          <option value="Granddaughter">Granddaughter</option>
+          
+        </select>
+      </div>  
+      <div class="form-group">
+        <label for="OccupationStatus">Occupation Status:</label>
+        <select class="form-control" formControlName="OccupationStatus">
+          <option value="Self Employed">Self Employed</option>
+          <option value="Employed">Employed</option>
+          <option value="Student">Student</option>
+          <option value="UnEmployed">Unemployed</option>
+        </select>
+      </div>
+<div class="form-group">
+    <label for="OccupationIndustry">Occupation Industry</label>
+    <input type="text" formControlName="OccupationIndustry" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.OccupationIndustry.errors }" />
+    <div *ngIf="submitted && f.OccupationIndustry.errors" class="invalid-feedback">
+        <div *ngIf="f.OccupationIndustry.errors.required">Occupation Industry is required</div>      
+    </div>
+</div>
+
+<div class="form-group" [ngClass]="{'has-error': ((registerForm.get('Income').touched ||
+registerForm.get('Income').dirty) &&
+     registerForm.get('Income').errors)}">
+    <label for="Income">Income</label>
+    <input type="number" formControlName="Income" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Income.errors }" />
+    <span class="help-block"
+                        *ngIf="((registerForm.get('Income').touched ||
+                                registerForm.get('Income').dirty) &&
+                                registerForm.get('Income').errors)">
+                     <span *ngIf="registerForm.get('Income').errors.required">
+                         Income is required
+                     </span>
+     
+                     </span>
+</div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+       
+        
+        </div>
+    </div>
+</div>
+</form>

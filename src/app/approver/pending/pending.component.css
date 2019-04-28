@@ -1,0 +1,19 @@
+.list-item{
+    display: inline-block;
+    padding: 2px 23px;
+    
+    border: 1px solid grey;
+    display: inline-block;
+    margin-top: 8px;
+}
+.volunteer{
+    text-align: center;
+    border: 1px solid #74b9ff;
+    margin: 0px 10px;
+    border-radius: 5px;
+    background-color: #e8ecf1;
+    line-height: 38px;
+    margin-bottom: 13px;
+    padding:10px;
+    display:inline-block;
+}
