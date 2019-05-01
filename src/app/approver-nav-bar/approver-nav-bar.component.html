@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<!-- <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" routerLink="/login">Bharat Sarkar</a>
@@ -10,7 +10,32 @@
      
       <li><a routerLink="/approver/declined">Declined</a></li>
       <li (click)='logout()'>Logout</li>
-      <!-- <li id="logout" style="color:white; margin-top:15px">Logout</li> -->
+       <li id="logout" style="color:white; margin-top:15px">Logout</li> 
     </ul>
+  </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" routerLink="/approver">Bharat Sarkar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+     
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/approver/pending">Pending Requests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/approver/accepted">Accepted Request</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/approver/declined">Declined Requests</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+    
+      <button class="btn btn-outline-light my-2 my-sm-0" type="button" (click)='logout()'>Logout</button>
+    </form>
   </div>
 </nav>

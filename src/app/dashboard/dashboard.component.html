@@ -1,5 +1,5 @@
 <app-volunteer-navbar></app-volunteer-navbar>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="padding:20px">
     <div style="padding:20px" class="panel panel-primary">
                 <div class="panel-heading">
@@ -120,7 +120,7 @@
  </span>
 </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Save</button>               
+        <button type="submit" [disabled]='!registerForm.valid' class="btn btn-primary">Save</button>               
     </div>
     </div>  
         </div>  

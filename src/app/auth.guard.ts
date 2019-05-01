@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, CanLoad, Route, UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Router} from '@angular/router';
+import decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +15,20 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      // this.token=localStorage.getItem('currentUser');
-      // this.role  = this.token.Role;
-      // const expectedRole = next.data.expectedRole;
+      
       // const status =this.token.Status;
-   // if (localStorage.getItem('currentUser')) {
+    if (localStorage.getItem('currentUser')) {
         // logged in so return true
-         // if(this.role===expectedRole)
+        
+        const tokenPayload = JSON.parse(localStorage.getItem('currentUser'));
+        console.log(tokenPayload)
+        this.role  = tokenPayload.Role;
+        const expectedRole = next.data.expectedRole;
+          if(this.role===expectedRole)
                 return true;
-   // }
-    // else if(localStorage.getItem('currentUser') && this.role==="Volunteer"){
-    //   if(status===expectedRole)
-    //     return true
-    // }
-   // return false;
+    }
+    this.route.navigate(['login']);
+    return false;
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,

@@ -1,8 +1,9 @@
 export class User {   
-    FirstName: string;
-    LastName: string;
-    Email: string;
-    Password: string;
-    ImageName:File;
-    AdhaarNumber:string;
+   public FirstName: string;
+   public LastName: string;
+   public  Email: string;
+   public  Password: string;
+   public  ImageName:File;
+   public  AdhaarNumber:string;
+  
 }

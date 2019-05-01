@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Alert } from 'selenium-webdriver';
-import {CommunicationService} from '../communication.service';
+import { ChartsModule } from 'ng2-charts';
 
 @Component({
   selector: 'app-approver',
@@ -10,48 +9,54 @@ import {CommunicationService} from '../communication.service';
   styleUrls: ['./approver.component.css']
 })
 export class ApproverComponent implements OnInit {
+  
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public barChartLabels = ['Agriculture', 'Software', 'Management', 'Manufacturing', 'Tourism and Hospitality', 'Education and Training', 'Other'];
+  public barChartType = 'bar';
+  public barChartLegend = true;
+  public barChartData = [
+    {data: [], label:'Occupation Industry'},
+   
+  ];
+  public isDataAvailable:boolean = false;
 
-  constructor(private userService: UserService, private messageService: CommunicationService) { }
-result : any;
-pending = new Array()
-accepted =new Array()
-declined =new Array()
-  ngOnInit() {
-    this.userService.getVolunteer().subscribe((data)=>{
-      this.result=data;
-      this.pending=[];
-      this.accepted= [];
-      this.declined=[];
-    //  console.log(this.result[0].VolunteerStatus)
-      for(let i=0;i<this.result.length;i++){
-        if(this.result[i].VolunteerStatus==='Pending'){
-            this.pending.push(this.result[i])
-        }
-        else if(this.result[i].VolunteerStatus==='Accepted'){
-          this.accepted.push(this.result[i])
-        }
-        else{
-          this.declined.push(this.result[i]);
-        }
-      }
+  constructor(private userService: UserService) { 
+    this.getData();
+  }
+  ngOnInit(){
+    
+  }
+  getData(){
+    this.userService.getGraphData().subscribe((data)=> 
+    {
+      this.graphData(data)
+    });
       
-        this.messageService.postMessage('pendingChild',this.pending);
-        this.messageService.postMessage('acceptedChild',this.accepted);
-        this.messageService.postMessage('declinedChild',this.declined);
-      console.log("exit");
-    //   console.log(this.result);
-    //  console.log(this.accepted)
-    //  console.log(this.pending);
-    },
-    error=>{
-        console.log("something went wrong");
-    })
+    
 
-    }
-    logout() {
-      // remove user from local storage to log user out
-      localStorage.removeItem('currentUser');
-    }
+  }
+  graphData(result){
+
+    this.barChartData = [
+      {data: [result.Agriculture, result.Software, result.Management, result.Manufacturing, result.HAndT,result.EducationAndTraining, result.Other], label: 'Occupation Industry'},
+     
+    ];
+    this.isDataAvailable = true;
+  }
+ 
+  
+    
 }
+
+  
+    
+   
+  
+  
+  
+
 
 

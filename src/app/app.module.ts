@@ -16,7 +16,9 @@ import { RequestpendingComponent } from './requestpending/requestpending.compone
 import { RequestdeclinedComponent } from './requestdeclined/requestdeclined.component';
 import { VolunteerNavbarComponent } from './volunteer-navbar/volunteer-navbar.component';
 import { PopulationregisterComponent } from './populationregister/populationregister.component';
-
+import { ChartsModule } from 'ng2-charts';
+//import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaModule } from 'angular-google-recaptcha';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { PopulationregisterComponent } from './populationregister/populationregi
     RequestdeclinedComponent,
     VolunteerNavbarComponent,
     PopulationregisterComponent,
+    
   
   ],
   imports: [
@@ -40,7 +43,13 @@ import { PopulationregisterComponent } from './populationregister/populationregi
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule,
+    RecaptchaModule.forRoot(
+      {
+        siteKey:'6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+      }
+    )
     
   ],
   providers: [],

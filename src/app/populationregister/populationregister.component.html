@@ -1,6 +1,8 @@
 <app-volunteer-navbar></app-volunteer-navbar>
 
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+note: cesus house number is firstname_lastname_street_city_state_pincode
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="padding:20px">
         <div style="padding:20px" class="panel panel-primary">
                 <div class="panel-heading">
@@ -67,6 +69,10 @@
      <span *ngIf="registerForm.get('Age').errors.required">
          Age is required
      </span>
+     <span *ngIf="registerForm.get('Age').errors.min">
+      Age cannot be less than zero
+  </span>
+     
 
      </span>
     </div>
@@ -77,13 +83,22 @@
             <div *ngIf="f.DateOfBirth.errors.required">Date of Birth is required</div>      
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('AgeAtMarriage').touched ||
+      registerForm.get('AgeAtMarriage').dirty) &&
+           registerForm.get('AgeAtMarriage').errors)}">
         <label for="AgeAtMarriage">Age at Marriage</label>
         <input type="number" formControlName="AgeAtMarriage" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.AgeAtMarriage.errors }" />
-        <div *ngIf="submitted && f.AgeAtMarriage.errors" class="invalid-feedback">
-            <div *ngIf="f.AgeAtMarriage.errors.required">Age at Marriage is required</div>
-           
-        </div>
+        <span class="help-block"
+        *ngIf="((registerForm.get('AgeAtMarriage').touched ||
+                registerForm.get('AgeAtMarriage').dirty) &&
+                registerForm.get('AgeAtMarriage').errors)">
+     <span *ngIf="registerForm.get('AgeAtMarriage').errors.required">
+         Age at marriage is required
+     </span>
+     <span *ngIf="registerForm.get('AgeAtMarriage').errors.min">
+      Age cannot be less than zero
+      </span>
+      </span> 
     </div>
     <div class="form-group">
         <label for="RelationshipToHead">Relationship To Head:</label>
@@ -104,15 +119,23 @@
           <option value="Self Employed">Self Employed</option>
           <option value="Employed">Employed</option>
           <option value="Student">Student</option>
-          <option value="UnEmployed">Unemployed</option>
+          <option value="Unemployed">Unemployed</option>
+          <option value="Housewife">Housewife</option>
+         
         </select>
       </div>
 <div class="form-group">
     <label for="OccupationIndustry">Occupation Industry</label>
-    <input type="text" formControlName="OccupationIndustry" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.OccupationIndustry.errors }" />
-    <div *ngIf="submitted && f.OccupationIndustry.errors" class="invalid-feedback">
-        <div *ngIf="f.OccupationIndustry.errors.required">Occupation Industry is required</div>      
-    </div>
+    <select class="form-control" formControlName="OccupationIndustry">
+      <option value="Agriculture">Agriculture</option>
+      <option value="Software">Software</option>
+      <option value="Management">Management</option>
+      <option value="Entertainment">Entertainment</option>
+      <option value="Hospitality and Tourism">Hospitality and Tourism</option>
+      <option value="Manufacturing">Manufacturing</option>
+      <option value="Education and Training">Education and Training</option>
+      <option value="Other">Other</option>
+    </select>
 </div>
 
 <div class="form-group" [ngClass]="{'has-error': ((registerForm.get('Income').touched ||
@@ -131,7 +154,7 @@ registerForm.get('Income').dirty) &&
                      </span>
 </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" [disabled]='!registerForm.valid' class="btn btn-primary">Save</button>
        
         
         </div>

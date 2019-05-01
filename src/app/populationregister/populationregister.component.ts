@@ -20,8 +20,8 @@ export class PopulationregisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
         NameOfPerson: ['', Validators.required],
         RelationshipToHead: ['', Validators.required],
-        Age: ['', Validators.required],
-        AgeAtMarriage: ['', [Validators.required]],
+        Age: ['', [Validators.required,Validators.min(0)]],
+        AgeAtMarriage: ['', [Validators.required, Validators.min(0)]],
         MaritalStatus:['',[Validators.required]],
         Gender:['',[Validators.required]],
         OccupationStatus:['',[Validators.required]],

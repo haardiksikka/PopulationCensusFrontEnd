@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="padding:20px" class="form-horizontal">
         <div style="padding:20px" class="panel panel-primary">
                 <div class="panel-heading">
@@ -26,7 +26,7 @@
             loginForm.get('Password').dirty) &&
             (loginForm.get('Password').errors)}">
              <label class="control-label" for="Password">Password</label>
-             <input type="Password" formControlName="Password" class="form-control" />
+             <input type="Password" formControlName="Password" class="form-control"  />
              <span class="help-block"
                      *ngIf="((loginForm.get('Password').touched ||
                 loginForm.get('Password').dirty) &&
@@ -34,7 +34,7 @@
                 <span *ngIf="loginForm.get('Password').errors.required">
                  Password is required
                 </span>
-                <span *ngIf="loginForm.get('Password').errors.pattern">
+                <span *ngIf="loginForm.get('Password').invalid">
                         Password must be atleast 8 character long and have atleast one special character, letter and number
                        </span>
              </span>
